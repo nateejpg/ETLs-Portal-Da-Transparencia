@@ -1,28 +1,32 @@
 import os
-import zipfile
 import pandas as pd
+import zipfile
 
-# Folder
+# FOLDER
 RAW_FOLDER = "Downloads/Raw"
-EXTRACTED_FOLDER = "Downloads/Clean"
+EXTRACTED_FOLDER = "Downloads/Extracted"
 os.makedirs(EXTRACTED_FOLDER, exist_ok=True)
 
-# Extract
-
+# EXTRACT
 for file in os.listdir(RAW_FOLDER):
+
     if file.endswith("zip"):
         zip_path = os.path.join(RAW_FOLDER, file)
-        print("Extracting {file}...")
+        print(f"Extracting {file}...")
         with zipfile.ZipFile(zip_path, "r") as zip_ref:
             zip_ref.extractall(EXTRACTED_FOLDER)
 
-# Read
+# READ DATA
 
-for file in os.listdir(EXTRACTED_FOLDER):
-    print(f"\n --- {file} ---")
+for file in os.listdir(RAW_FOLDER):
+
+    print(f"{file}")
+
     try:
-        df = pd.read_csv(os.path.join(EXTRACTED_FOLDER, file), sep = ';', nrows=5, encoding='latin1')
-        print(df.head())
+
+        df = pd.read_csv(os.path.join(EXTRACTED_FOLDER, file), sep = ';', nrows = 5, encoding='latin1')
+        df.head()
 
     except Exception as e:
-        print(f"There was an error with {file}! {e}")
+
+        print(f"Error reading {file}: {e}")
