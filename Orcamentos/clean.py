@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-EXTRACTED_FOLDER = "../Downloads/Extracted"
+EXTRACTED_FOLDER = "./Downloads/Extracted"
 
 dfs = []
 for file in os.listdir(EXTRACTED_FOLDER):
