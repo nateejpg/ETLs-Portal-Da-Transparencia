@@ -3,8 +3,8 @@ import zipfile
 import pandas as pd
 
 # Folder
-RAW_FOLDER = "../Downloads/Raw"
-EXTRACTED_FOLDER = "../Downloads/Extracted"
+RAW_FOLDER = "./Downloads/Raw"
+EXTRACTED_FOLDER = "./Downloads/Extracted"
 os.makedirs(EXTRACTED_FOLDER, exist_ok=True)
 
 # Extract

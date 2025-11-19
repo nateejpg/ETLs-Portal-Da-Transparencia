@@ -10,7 +10,7 @@ headers = {
 }
 
 # Folder
-RAW_DATA_FILES = "../Downloads/Raw"
+RAW_DATA_FILES = "./Downloads/Raw"
 os.makedirs(RAW_DATA_FILES, exist_ok=True)
 
 # Prepare Data
