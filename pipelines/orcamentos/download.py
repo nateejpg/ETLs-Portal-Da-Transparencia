@@ -10,8 +10,13 @@ headers = {
 }
 
 # Folder
-RAW_DATA_FILES = "./Downloads/Raw"
-os.makedirs(RAW_DATA_FILES, exist_ok=True)
+RAW_DATA_FOLDER = os.path.abspath(
+    os.path.join(
+        os.path.dirname(__file__),
+        "../../data/raw/orcamentos"
+    )
+)
+os.makedirs(RAW_DATA_FOLDER, exist_ok=True)
 
 # Prepare Data
 years = list(range(2014, 2026))
@@ -22,7 +27,7 @@ for year in years:
 
     print(f"Donwloading year: {year}")
     file_url = f"{URL}/{year}"
-    file_path = os.path.join(RAW_DATA_FILES, f"orcamento_despesa_{year}.zip")
+    file_path = os.path.join(RAW_DATA_FOLDER, f"orcamento_despesa_{year}.zip")
 
     try:
 

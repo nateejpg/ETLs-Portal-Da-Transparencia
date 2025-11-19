@@ -1,2 +1,3 @@
 venv/
-/Orcamentos/Downloads/Processed/
+data/processed
+logs/

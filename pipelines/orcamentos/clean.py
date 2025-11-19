@@ -1,7 +1,12 @@
 import os
 import pandas as pd
 
-EXTRACTED_FOLDER = "./Downloads/Extracted"
+EXTRACTED_FOLDER = os.path.abspath(
+    os.path.join(
+        os.path.dirname(__file__),
+        "../../data/extracted/orcamentos"
+    )
+)
 
 dfs = []
 for file in os.listdir(EXTRACTED_FOLDER):
@@ -59,7 +64,12 @@ for col in df.columns:
         df[col] = df[col].replace({",": ".", "%": ""}, regex=True)
         df[col] = pd.to_numeric(df[col], errors="ignore")
 
-PROCESSED_FOLDER = "Downloads/Processed"
+PROCESSED_FOLDER = os.path.abspath(
+    os.path.join(
+        os.path.dirname(__file__),
+        "../../data/processed/orcamentos"
+    )
+)
 os.makedirs(PROCESSED_FOLDER, exist_ok=True)
 
 output_path = os.path.join(PROCESSED_FOLDER, "orcamento_despesa_clean.csv")
