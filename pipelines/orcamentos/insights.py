@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv("Downloads/Processed/orcamento_despesa_clean.csv")
+df = pd.read_csv("../../data/processed/orcamentos/orcamento_despesa_clean.csv")
 
 print(df.shape)        # rows and columns
 print(df.columns)      # confirm column names
