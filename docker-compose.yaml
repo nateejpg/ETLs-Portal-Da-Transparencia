@@ -68,8 +68,7 @@ x-airflow-common:
     AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
     # WARNING: Use _PIP_ADDITIONAL_REQUIREMENTS option ONLY for a quick checks
     # for other purpose (development, test and especially production usage) build/extend Airflow image.
-    _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
-    # The following line can be used to set a custom config file, stored in the local config folder
+    _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-pandas requests sqlalchemy psycopg2-binary}    # The following line can be used to set a custom config file, stored in the local config folder
     # If you want to use it, outcomment it and replace airflow.cfg with the name of your config file
     # AIRFLOW_CONFIG: '/opt/airflow/config/airflow.cfg'
   volumes:
@@ -101,6 +100,18 @@ services:
       interval: 10s
       retries: 5
       start_period: 5s
+    restart: always
+
+  postgres-dw:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: orcamentos_dw
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres-dw-data:/var/lib/postgresql/data
     restart: always
 
   redis:
@@ -288,3 +299,4 @@ services:
 
 volumes:
   postgres-db-volume:
+  postgres-dw-data:

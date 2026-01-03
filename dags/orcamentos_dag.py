@@ -43,5 +43,11 @@ with DAG(
         python_callable=run_script,
         op_kwargs={"script_name":"clean.py"}
     )
+
+    load_task = PythonOperator(
+        task_id = "load_transformed_files",
+        python_callable= run_script,
+        op_kwargs={"script_name":"load.py"}
+    )
     
-    download_task >> extract_task >> clean_task
+    download_task >> extract_task >> clean_task >> load_task

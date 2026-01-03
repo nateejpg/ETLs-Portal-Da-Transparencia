@@ -25,7 +25,7 @@ print(f"Years to download: {years}")
 # Get the data
 for year in years:
 
-    print(f"Donwloading year: {year}")
+    print(f"Downloading year: {year}")
     file_url = f"{URL}/{year}"
     file_path = os.path.join(RAW_DATA_FOLDER, f"orcamento_despesa_{year}.zip")
 
