@@ -27,7 +27,7 @@ def load_to_postgres():
     print("Reading processed CSV")
     df = pd.read_csv(CSV_PATH)
 
-    print(f"Conencting to Data Warehouse ({DB_HOST})...")
+    print(f"Connencting to Data Warehouse ({DB_HOST})...")
     engine = create_engine(DATABASE_URL)
 
 # LOAD TO DW
